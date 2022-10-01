@@ -1,19 +1,18 @@
 from pytube import YouTube
 
-#ask for the link from user
-link = input("Enter the link of YouTube video you want to download:  ")
+# Pergunta pelo link do YouTube
+link = input("Entre com o link do YouTube:  ")
 yt = YouTube(link)
 
-#Showing details
-print("Title: ",yt.title)
-print("Number of views: ",yt.views)
-print("Length of video: ",yt.length)
-print("Rating of video: ",yt.rating)
-yt.thumbnail_url
+# Mostra detalhes do vídeo
+print("Título: ",yt.title)
+print("Tempo do vídeo: ",yt.length, " segundos")
+print("Tamando do vídeo: ",yt.streams.get_highest_resolution().filesize ,"em bytes")
+print(yt.thumbnail_url)
 #Getting the highest resolution possible
 ys = yt.streams.get_highest_resolution()
 
 #Starting download
 print("Downloading...")
 ys.download()
-print("Download completed!!")
+print("Download finalizado!!")

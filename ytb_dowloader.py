@@ -1,8 +1,9 @@
 from pytube import YouTube
-import screen_ytb_dowloader
+import screen_ytb_dowloader as s_ytb
 
 # Pergunta pelo link do YouTube
-link = input("Entre com o link do YouTube:  ")
+
+# link = input("Entre com o link do YouTube:  ")
 yt = YouTube(link)
 
 # Mostra detalhes do vídeo

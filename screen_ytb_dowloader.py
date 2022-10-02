@@ -9,6 +9,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import ytb_dowloader as download
 
 
 class Ui_ytb_dowloader(object):
@@ -18,14 +19,16 @@ class Ui_ytb_dowloader(object):
         ytb_dowloader.setMinimumSize(QtCore.QSize(650, 450))
         ytb_dowloader.setMaximumSize(QtCore.QSize(600, 450))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("youtube-logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("youtube-logo.png"),
+                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ytb_dowloader.setWindowIcon(icon)
         self.verticalLayout = QtWidgets.QVBoxLayout(ytb_dowloader)
         self.verticalLayout.setObjectName("verticalLayout")
         self.pesquisa = QtWidgets.QFrame(ytb_dowloader)
         self.pesquisa.setMaximumSize(QtCore.QSize(550, 50))
         self.pesquisa.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.pesquisa.setStyleSheet("alternate-background-color: rgba(255, 255, 255, 2);")
+        self.pesquisa.setStyleSheet(
+            "alternate-background-color: rgba(255, 255, 255, 2);")
         self.pesquisa.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.pesquisa.setFrameShadow(QtWidgets.QFrame.Raised)
         self.pesquisa.setObjectName("pesquisa")
@@ -111,19 +114,31 @@ class Ui_ytb_dowloader(object):
         self.baixar.setObjectName("baixar")
         self.verticalLayout.addWidget(self.baixar)
 
+
+        self.baixar.clicked.connect(lambda: download.download(self.pesq_link.text()))
+
         self.retranslateUi(ytb_dowloader)
         QtCore.QMetaObject.connectSlotsByName(ytb_dowloader)
 
+
+
+        #-------------------------------------------
+
+        
+
     def retranslateUi(self, ytb_dowloader):
         _translate = QtCore.QCoreApplication.translate
-        ytb_dowloader.setWindowTitle(_translate("ytb_dowloader", "DOWLOAD YOUTUBE"))
+        ytb_dowloader.setWindowTitle(_translate(
+            "ytb_dowloader", "DOWLOAD YOUTUBE"))
         self.label_link.setText(_translate("ytb_dowloader", "LINK:"))
-        self.tam_video.setText(_translate("ytb_dowloader", "Tamanho do vídeo:"))
+        self.tam_video.setText(_translate(
+            "ytb_dowloader", "Tamanho do vídeo:"))
         self.dt_time_repr.setText(_translate("ytb_dowloader", "TextLabel"))
         self.img_video.setText(_translate("ytb_dowloader", "Imagem:"))
         self.titulo.setText(_translate("ytb_dowloader", "Título:"))
         self.dt_title.setText(_translate("ytb_dowloader", "TextLabel"))
-        self.reprud_time.setText(_translate("ytb_dowloader", "Tempo de reprodução:"))
+        self.reprud_time.setText(_translate(
+            "ytb_dowloader", "Tempo de reprodução:"))
         self.dt_tam.setText(_translate("ytb_dowloader", "TextLabel"))
         self.progressBar.setFormat(_translate("ytb_dowloader", "%p%"))
         self.baixar.setText(_translate("ytb_dowloader", "Baixar"))

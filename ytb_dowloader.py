@@ -8,6 +8,7 @@ def download(link):
     yt = YouTube(link)
 
     # Mostra detalhes do vídeo
+    s_ytb.Ui_ytb_dowloader
     print("Título: ",yt.title)
     print("Tempo do vídeo: ",yt.length, " segundos")
     print("Tamando do vídeo: ",yt.streams.get_highest_resolution().filesize ,"em bytes")
